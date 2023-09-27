@@ -11,7 +11,7 @@
                 <h2>{{ product.name }}</h2>
                 <div class="content">
                     {% if product.image %}
-                        {{ product.image.thumbnail("kitkat").html|raw }}
+                        {{ product.image.thumbnail("content").html|raw }}
                     {% endif %}
 
                     {{ product.description|raw }}

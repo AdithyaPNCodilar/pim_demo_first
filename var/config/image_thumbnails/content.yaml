@@ -3,10 +3,10 @@ pimcore:
         image:
             thumbnails:
                 definitions:
-                    kitkat:
+                    content:
                         items: {  }
                         medias: {  }
-                        name: kitkat
+                        name: content
                         description: ''
                         group: ''
                         format: SOURCE
@@ -16,6 +16,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1695797686
-                        creationDate: 1695797686
+                        modificationDate: 1695811837
+                        creationDate: 1695811837
                         preserveAnimation: false
