@@ -3,10 +3,10 @@ pimcore:
         image:
             thumbnails:
                 definitions:
-                    content:
+                    employee:
                         items: {  }
                         medias: {  }
-                        name: content
+                        name: employee
                         description: ''
                         group: ''
                         format: SOURCE
@@ -16,6 +16,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1695873879
-                        creationDate: 1695811837
+                        modificationDate: 1695965197
+                        creationDate: 1695965173
                         preserveAnimation: false
