@@ -3,20 +3,17 @@
 namespace App\Controller;
 
 use Pimcore\Controller\FrontendController;
+use Pimcore\Model\Asset;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ContentController extends FrontendController
+class   InheritanceController extends FrontendController
 {
-    #[Template('content/default.html.twig')]
+    #[Template('employee/inheritance.html.twig')]
     public function defaultAction(Request $request): array
     {
         return [];
     }
-    public function productAction(Request $request): Response
-    {
-        return $this->render('content/product.html.twig');
-    }
-}
 
+}

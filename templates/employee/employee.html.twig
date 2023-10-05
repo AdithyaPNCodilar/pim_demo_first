@@ -1,0 +1,107 @@
+{% for i in pimcore_block('employee').iterator %}
+    {% if editmode %}
+        {{ pimcore_relation("employee") }}
+    {% else %}
+        {% set employee = pimcore_relation("employee").element %}
+        {% if employee %}
+            <h2>{{ employee.name }}</h2>
+            <p>Email {{ employee.email|raw }}</p>
+        {% endif %}
+
+        {% if employee.geopoint is not empty %}
+            <h3>Geopoints Data</h3>
+            <p>Latitude: {{ employee.geopoint.getLatitude() }}</p>
+            <p>Longitude: {{ employee.geopoint.getLongitude() }}</p>
+        {% endif %}
+
+        {% if employee.project is not null %}
+            {% for teams in employee.project.items %}
+                <h3>Teams</h3>
+                <p>Name :{{ teams.name }}</p>
+                <p>Designation : {{ teams.designation }}</p>
+                <p>Experience: {{ teams.experience }}</p>
+                <p>Starting Date: {{ teams.starting_date }}</p>
+                <p>Skills: {{ teams.skills }}</p>
+            {% endfor %}
+        {% endif %}
+        <h3>Description</h3>
+        <p>{{ employee.description }}</p>
+    {% endif %}
+
+     {% for i in pimcore_block('task').iterator %}
+         {% if editmode %}
+            {{ pimcore_relation("task") }}
+         {% else %}
+         {% set task = pimcore_relation("task").element %}
+         {% if task %}
+             <h2>Task: {{ task.task }}</h2>
+             <p>Description {{ task.description|raw }}</p>
+             <p>ETA: {{ task.eta|raw }}</p>
+             {% if task.teamtask is not null %}
+                 {% for taskitem in task.teamtask.items %}
+                     <p>Manager: {{ taskitem.manager }}</p>
+                     <p>Members: {{ taskitem.members }}</p>
+                     <p>Logo Image: <img src="{{ taskitem.image.getThumbnail('employee') }}" alt="project logo"></p>
+                 {% endfor %}
+            {% endif %}
+         {% endif %}
+
+             {% if employee.project is not null %}
+                 {% for teams in employee.project.items %}
+                     <h3>Teams</h3>
+                     <p>Name :{{ teams.name }}</p>
+                     <p>Designation : {{ teams.designation }}</p>
+                     <p>Experience: {{ teams.experience }}</p>
+                     <p>Starting Date: {{ teams.starting_date }}</p>
+                     <p>Skills: {{ teams.skills }}</p>
+                 {% endfor %}
+             {% endif %}
+
+         {% endif %}
+     {% endfor %}
+
+    {% if project is defined %}
+        <h3>Project :{{ project }} </h3>
+    {% else %}
+        No data available
+    {% endif %}
+
+
+    {% if structuredTableData is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Salary</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in structuredTableData %}
+                    <tr>
+                        <td>{{ row.salary }}</td>
+                        <td>{{ row.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No data available in the structured table.</p>
+        {% endif %}
+
+    <ul>
+        {% for groupData in classificationStoreData %}
+            <h2>{{ groupData.groupName }}</h2>
+            <ul>
+                {% for keyData in groupData.keys %}
+                    <li>
+                        <strong>{{ keyData.name }}: </strong>{{ keyData.value|join(', ') }}<br>
+                        {% if keyData.isQuantityValue %}
+                            (Quantity Value)
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+
+{% endfor %}

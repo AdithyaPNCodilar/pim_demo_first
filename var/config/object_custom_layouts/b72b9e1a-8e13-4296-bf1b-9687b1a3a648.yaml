@@ -1,0 +1,99 @@
+pimcore:
+    objects:
+        custom_layouts:
+            definitions:
+                b72b9e1a-8e13-4296-bf1b-9687b1a3a648:
+                    id: b72b9e1a-8e13-4296-bf1b-9687b1a3a648
+                    name: Employees
+                    description: ''
+                    creationDate: 1696501170
+                    modificationDate: 1696501207
+                    userOwner: 2
+                    classId: '2'
+                    layoutDefinitions:
+                        name: pimcore_root
+                        type: null
+                        region: null
+                        title: null
+                        width: 0
+                        height: 0
+                        collapsible: false
+                        collapsed: false
+                        bodyStyle: null
+                        datatype: layout
+                        children:
+                            -
+                                name: Layout
+                                type: null
+                                region: null
+                                title: null
+                                width: 0
+                                height: 0
+                                collapsible: false
+                                collapsed: false
+                                bodyStyle: null
+                                datatype: layout
+                                children:
+                                    -
+                                        name: Name
+                                        title: Name
+                                        tooltip: ''
+                                        mandatory: false
+                                        noteditable: false
+                                        index: false
+                                        locked: false
+                                        style: ''
+                                        permissions: null
+                                        fieldtype: input
+                                        relationType: false
+                                        invisible: false
+                                        visibleGridView: false
+                                        visibleSearch: false
+                                        defaultValue: null
+                                        columnLength: 190
+                                        regex: ''
+                                        regexFlags: {  }
+                                        unique: false
+                                        showCharCount: false
+                                        width: ''
+                                        defaultValueGenerator: ''
+                                        datatype: data
+                                    -
+                                        name: Email
+                                        title: Email
+                                        tooltip: ''
+                                        mandatory: false
+                                        noteditable: false
+                                        index: false
+                                        locked: false
+                                        style: ''
+                                        permissions: null
+                                        fieldtype: input
+                                        relationType: false
+                                        invisible: false
+                                        visibleGridView: false
+                                        visibleSearch: false
+                                        defaultValue: null
+                                        columnLength: 190
+                                        regex: ''
+                                        regexFlags: {  }
+                                        unique: true
+                                        showCharCount: false
+                                        width: ''
+                                        defaultValueGenerator: ''
+                                        datatype: data
+                                locked: false
+                                fieldtype: panel
+                                layout: null
+                                border: false
+                                icon: null
+                                labelWidth: 100
+                                labelAlign: left
+                        locked: false
+                        fieldtype: panel
+                        layout: null
+                        border: false
+                        icon: null
+                        labelWidth: 100
+                        labelAlign: left
+                    default: 0

@@ -8,6 +8,15 @@
  * - Name [input]
  * - Email [input]
  * - Password [password]
+ * - geopoint [geopoint]
+ * - myblock [block]
+ * -- project [input]
+ * - Project [fieldcollections]
+ * - localizedfields [localizedfields]
+ * -- Description [wysiwyg]
+ * - Table [structuredTable]
+ * - Check [consent]
+ * - Empstore [classificationstore]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -17,7 +26,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1695882096,
+   'modificationDate' => 1696497948,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -145,6 +154,310 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'minimumLength' => NULL,
              'width' => '',
           )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Geopoint::__set_state(array(
+             'name' => 'geopoint',
+             'title' => 'Geopoint',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'lat' => 0.0,
+             'lng' => 0.0,
+             'zoom' => 1,
+             'mapType' => 'roadmap',
+             'height' => 180,
+             'width' => '',
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
+             'name' => 'myblock',
+             'title' => 'Myblock',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'lazyLoading' => false,
+             'disallowAddRemove' => false,
+             'disallowReorder' => false,
+             'collapsible' => false,
+             'collapsed' => false,
+             'maxItems' => NULL,
+             'styleElement' => '',
+             'children' => 
+            array (
+              0 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'name' => 'project',
+                 'title' => 'Project',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => '',
+                 'defaultValueGenerator' => '',
+              )),
+            ),
+             'layout' => NULL,
+             'referencedFields' => 
+            array (
+            ),
+             'fieldDefinitionsCache' => NULL,
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Fieldcollections::__set_state(array(
+             'name' => 'Project',
+             'title' => 'Project',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+              0 => 'Teams',
+            ),
+             'lazyLoading' => true,
+             'maxItems' => NULL,
+             'disallowAddRemove' => false,
+             'disallowReorder' => false,
+             'collapsed' => false,
+             'collapsible' => false,
+             'border' => false,
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
+             'name' => 'localizedfields',
+             'title' => '',
+             'tooltip' => NULL,
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => NULL,
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => true,
+             'visibleSearch' => true,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'children' => 
+            array (
+              0 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+                 'name' => 'Description',
+                 'title' => 'Description',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
+                 'maxCharacters' => '',
+                 'height' => '',
+                 'width' => '',
+              )),
+            ),
+             'region' => NULL,
+             'layout' => NULL,
+             'maxTabs' => NULL,
+             'border' => false,
+             'provideSplitView' => false,
+             'tabPosition' => 'top',
+             'hideLabelsWhenTabsReached' => NULL,
+             'referencedFields' => 
+            array (
+            ),
+             'permissionView' => NULL,
+             'permissionEdit' => NULL,
+             'labelWidth' => 100,
+             'labelAlign' => 'left',
+             'fieldDefinitionsCache' => NULL,
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\StructuredTable::__set_state(array(
+             'name' => 'Table',
+             'title' => 'Table',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'labelWidth' => 0,
+             'labelFirstCell' => '',
+             'cols' => 
+            array (
+              0 => 
+              array (
+                'type' => 'text',
+                'position' => 1,
+                'key' => 'salary',
+                'label' => 'salary',
+              ),
+              1 => 
+              array (
+                'type' => 'text',
+                'position' => 2,
+                'key' => 'date',
+                'label' => 'date',
+              ),
+            ),
+             'rows' => 
+            array (
+              0 => 
+              array (
+                'position' => 1,
+                'key' => 'employee',
+                'label' => 'Employee',
+              ),
+              1 => 
+              array (
+                'position' => 2,
+                'key' => 'department',
+                'label' => 'Department',
+              ),
+            ),
+             'height' => '',
+             'width' => '',
+          )),
+          8 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Consent::__set_state(array(
+             'name' => 'Check',
+             'title' => 'Check',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValue' => 0,
+             'width' => '',
+          )),
+          9 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Classificationstore::__set_state(array(
+             'name' => 'Empstore',
+             'title' => 'Empstore',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'children' => 
+            array (
+            ),
+             'labelWidth' => 0,
+             'localized' => false,
+             'storeId' => 1,
+             'hideEmptyData' => false,
+             'disallowAddRemove' => false,
+             'referencedFields' => 
+            array (
+            ),
+             'fieldDefinitionsCache' => NULL,
+             'allowedGroupIds' => 
+            array (
+            ),
+             'activeGroupDefinitions' => 
+            array (
+            ),
+             'maxItems' => NULL,
+             'height' => NULL,
+             'width' => NULL,
+          )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
@@ -169,7 +482,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'icon' => '',
+   'icon' => '/bundles/pimcoreadmin/img/icon/book.png',
    'group' => '',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
