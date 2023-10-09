@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Inheritance: no
- * Variants: no
+ * Inheritance: yes
+ * Variants: yes
  *
  * Fields Summary:
  * - Name [input]
@@ -26,21 +26,21 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1696497948,
+   'modificationDate' => 1696853163,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
-   'implementsInterfaces' => '',
+   'implementsInterfaces' => '\\App\\Model\\Employee\\EmployeeInterface',
    'listingParentClass' => '',
-   'useTraits' => '',
+   'useTraits' => '\\App\\Traits\\EmployeeTrait',
    'listingUseTraits' => '',
    'encryption' => false,
    'encryptedTables' => 
   array (
   ),
-   'allowInherit' => false,
-   'allowVariants' => false,
-   'showVariants' => false,
+   'allowInherit' => true,
+   'allowVariants' => true,
+   'showVariants' => true,
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
@@ -458,6 +458,29 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'height' => NULL,
              'width' => NULL,
           )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Iframe::__set_state(array(
+             'name' => 'iframe',
+             'type' => NULL,
+             'region' => NULL,
+             'title' => 'myiframe',
+             'width' => '',
+             'height' => '',
+             'collapsible' => false,
+             'collapsed' => false,
+             'bodyStyle' => NULL,
+             'datatype' => 'layout',
+             'children' => 
+            array (
+            ),
+             'locked' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'fieldtype' => 'iframe',
+             'iframeUrl' => '/iframe/summary',
+             'renderingData' => 'Example',
+          )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
@@ -485,10 +508,20 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'icon' => '/bundles/pimcoreadmin/img/icon/book.png',
    'group' => '',
    'showAppLoggerTab' => false,
-   'linkGeneratorReference' => '',
+   'linkGeneratorReference' => 'App\\Website\\LinkGenerator\\EmployeeLinkGenerator',
    'previewGeneratorReference' => '',
    'compositeIndices' => 
   array (
+    0 => 
+    array (
+      'index_key' => 'mycomposite',
+      'index_type' => 'query',
+      'index_columns' => 
+      array (
+        0 => 'Name',
+        1 => 'Email',
+      ),
+    ),
   ),
    'showFieldLookup' => false,
    'propertyVisibility' => 

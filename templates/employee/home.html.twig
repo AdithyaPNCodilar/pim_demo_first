@@ -75,11 +75,11 @@
             "placeholder": "Description"
         }) }}
     </p>
-    <div class="schedule">
-        {% for i in pimcore_scheduledblock('block').iterator %}
-            <h2>{{ pimcore_input('blockinput') }}</h2>
-        {% endfor %}
-    </div>
+{#    <div class="schedule">#}
+{#        {% for i in pimcore_scheduledblock('block').iterator %}#}
+{#            <h2>{{ pimcore_input('blockinput') }}</h2>#}
+{#        {% endfor %}#}
+{#    </div>#}
 
     <div class="fa-table">
         {% if editmode %}

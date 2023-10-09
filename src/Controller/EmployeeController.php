@@ -9,9 +9,12 @@ use Pimcore\Model\DataObject\Data\QuantityValue;
 use Pimcore\Model\DataObject\Employee;
 use Pimcore\Model\DataObject\Task;
 use Pimcore\Model\DataObject\Classificationstore\KeyConfig;
+use Pimcore\Model\Document\Link;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Pimcore\Model\DataObject\Service;
+use Symfony\Component\Routing\Annotation\Route;
 
 class EmployeeController extends FrontendController
 {
@@ -63,6 +66,27 @@ class EmployeeController extends FrontendController
         $structuredTable = $test->getTable();
         $rows = $structuredTable->getData();
 
+        $d = Link::getById(12);
+        echo($d->getHref());
+
+        $class = DataObject\Employee::getById(2);
+        $fields = $class->getFieldDefinitions();
+
+        foreach ($fields as $field) {
+            $field->setLocked(true);
+        }
+
+        $class->save();
+
+
+        $employee = DataObject\Task::getById(4);
+        $employeeBrick = $employee->getTask();
+//        var_dump($employeeBrick);
+//        die();
+        if ($employeeBrick === null) {
+            throw $this->createNotFoundException('Employee not found');
+        }
+
         $classificationStore = $test->getEmpstore();
 
         foreach ($classificationStore->getGroups() as $group) {
@@ -97,6 +121,29 @@ class EmployeeController extends FrontendController
             'structuredTableData' => $rows,
             'classificationStoreData' => $classificationStoreData,
         ]);
+    }
+
+    /**
+     * @Route("/iframe/summary")
+     */
+    public function summaryAction(Request $request): Response
+    {
+        $context = json_decode($request->get("context"), true);
+        $objectId = $context["objectId"];
+
+        $language = $context["language"] ?? "default_language";
+
+        $object = Service::getElementFromSession('object', $objectId, '');
+
+        if ($object === null) {
+            $object = Service::getElementById('object', $objectId);
+        }
+
+        $response = '<h1>Title for language "' . $language . '": ' . $object->getData($language) . "</h1>";
+
+        $response .= '<h2>Context</h2>';
+        $response .= array_to_html_attribute_string($context);
+        return new Response($response);
     }
 
 }
