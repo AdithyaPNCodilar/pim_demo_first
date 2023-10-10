@@ -5,6 +5,7 @@ namespace App\Controller;
 use \Pimcore\Model\DataObject;
 use Pimcore\Controller\FrontendController;
 use Pimcore\Model\Asset;
+use Pimcore\Model\DataObject\ClassDefinition;
 use Pimcore\Model\DataObject\Data\QuantityValue;
 use Pimcore\Model\DataObject\Employee;
 use Pimcore\Model\DataObject\Task;
@@ -49,6 +50,9 @@ class EmployeeController extends FrontendController
         return $this->render('employee/footer.html.twig');
     }
 
+    /**
+     * @throws \Exception
+     */
     #[Template('employee/employee.html.twig')]
     public function employeeAction(Request $request): Response
     {
@@ -63,13 +67,13 @@ class EmployeeController extends FrontendController
         $locale = 'de';
         $description = $test->getDescription($locale);
 
+        $id = Link::getById(12);
+        $link = $id->getHref();
+
         $structuredTable = $test->getTable();
         $rows = $structuredTable->getData();
 
-        $d = Link::getById(12);
-        echo($d->getHref());
-
-        $class = DataObject\Employee::getById(2);
+        $class = ClassDefinition::getById(2);
         $fields = $class->getFieldDefinitions();
 
         foreach ($fields as $field) {
@@ -81,8 +85,6 @@ class EmployeeController extends FrontendController
 
         $employee = DataObject\Task::getById(4);
         $employeeBrick = $employee->getTask();
-//        var_dump($employeeBrick);
-//        die();
         if ($employeeBrick === null) {
             throw $this->createNotFoundException('Employee not found');
         }
@@ -120,6 +122,7 @@ class EmployeeController extends FrontendController
             'description' => $description,
             'structuredTableData' => $rows,
             'classificationStoreData' => $classificationStoreData,
+            'link'=>$link,
         ]);
     }
 
@@ -145,5 +148,6 @@ class EmployeeController extends FrontendController
         $response .= array_to_html_attribute_string($context);
         return new Response($response);
     }
+
 
 }

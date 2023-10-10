@@ -19,14 +19,8 @@ class EmployeeLinkGenerator implements LinkGeneratorInterface
 
     protected function doGenerate(\Pimcore\Model\DataObject\Employee $object, array $params): string
     {
-        // Retrieve the employee name from the Employee object
         $employeeName = $object->getName();
-//        $employeeId = $object->getId();
-
-        // Generate the URL based on your requirements
-//        $url = '/employee/' . $employeeName . '/' . $employeeId;
         $url = '/employee/' . $employeeName;
-
 
         return $url;
     }
