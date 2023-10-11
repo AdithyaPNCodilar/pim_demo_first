@@ -13,10 +13,12 @@ pimcore:
 # ./bin/console debug:config pimcore assets.image
 
 
-#### TRANSLATIONS
-#    translations:
+### TRANSLATIONS
+    translations:
 #        case_insensitive: true
-
+        admin_translation_mapping:
+            'hr': 'en'
+            'zh': 'zh_Hans'
 #### FEATURE FLAGS
 #    flags:
 #        zend_date: true

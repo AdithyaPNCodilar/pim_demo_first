@@ -51,12 +51,16 @@ class EmployeeController extends FrontendController
     }
 
     /**
+     * @Route("/employee/{employeeName}", name="employee_preview")
      * @throws \Exception
+     *
      */
     #[Template('employee/employee.html.twig')]
     public function employeeAction(Request $request): Response
     {
         $test = Employee::getById(3);
+        $translated = $test->getDescription('hi');
+
         $blockItems = $test->getMyBlock();
         $firstBlockItem = $blockItems[0];
         $project = $firstBlockItem["project"]->getData();
@@ -116,6 +120,8 @@ class EmployeeController extends FrontendController
             $classificationStoreData[] = $groupData;
         }
 
+        $asset = Asset::getById(20);
+
         return $this->render('employee/employee.html.twig', [
             'project' => $project,
             'geopoint' => $geopoint,
@@ -123,6 +129,8 @@ class EmployeeController extends FrontendController
             'structuredTableData' => $rows,
             'classificationStoreData' => $classificationStoreData,
             'link'=>$link,
+            'asset'=>$asset,
+            'translated'=>$translated,
         ]);
     }
 
@@ -148,6 +156,5 @@ class EmployeeController extends FrontendController
         $response .= array_to_html_attribute_string($context);
         return new Response($response);
     }
-
 
 }

@@ -41,7 +41,7 @@
                  {% for taskitem in task.teamtask.items %}
                      <p>Manager: {{ taskitem.manager }}</p>
                      <p>Members: {{ taskitem.members }}</p>
-                     <p>Logo Image: <img src="{{ taskitem.image.getThumbnail('employee') }}" alt="project logo"></p>
+                     <p>Logo Image: <img src="{{ taskitem.image.getThumbnail('logo') }}" alt="project logo"></p>
                  {% endfor %}
             {% endif %}
          {% endif %}
@@ -106,4 +106,9 @@
     <ul class="foo">
         <li><a href=" {{ link }}"> {{ link }}</a></li>
     </ul>
+
+    {{ asset.getThumbnail('logo').getHtml() | raw }}
+    <hr>
+    {{ translated|raw }}
+
 {% endfor %}
