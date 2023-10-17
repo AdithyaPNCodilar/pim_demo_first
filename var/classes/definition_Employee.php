@@ -19,6 +19,7 @@
  * - Empstore [classificationstore]
  * - Division [input]
  * - fg [input]
+ * - user [user]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -28,10 +29,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1697028137,
+   'modificationDate' => 1697543031,
    'userOwner' => 2,
    'userModification' => 2,
-   'parentClass' => '',
+   'parentClass' => 'App\\Model\\DataObject\\TestParent',
    'implementsInterfaces' => '\\App\\Model\\Employee\\EmployeeInterface',
    'listingParentClass' => '',
    'useTraits' => '\\App\\Traits\\EmployeeTrait',
@@ -542,6 +543,35 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'showCharCount' => false,
              'width' => '',
              'defaultValueGenerator' => '',
+          )),
+          13 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\User::__set_state(array(
+             'name' => 'user',
+             'title' => 'User',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => true,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => NULL,
+             'defaultValue' => NULL,
+             'optionsProviderClass' => NULL,
+             'optionsProviderData' => NULL,
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+             'width' => NULL,
+             'unique' => false,
           )),
         ),
          'locked' => false,

@@ -16,6 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Pimcore\Model\DataObject\Service;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Pimcore\Model;
+use Pimcore\Model\User;
+use Pimcore\Tool\DeviceDetector;
 
 class EmployeeController extends FrontendController
 {
@@ -51,7 +55,7 @@ class EmployeeController extends FrontendController
     }
 
     /**
-     * @Route("/employee/{employeeName}", name="employee_preview")
+     * @Route("/employee", name="employee_preview")
      * @throws \Exception
      *
      */
@@ -120,7 +124,65 @@ class EmployeeController extends FrontendController
             $classificationStoreData[] = $groupData;
         }
 
+    // Asset (Thumbnail)
         $asset = Asset::getById(20);
+
+    // Tags
+        $tag =  new \Pimcore\Model\Element\Tag();
+        try {
+            $tag->setName('Document')->save();
+            \Pimcore\Model\Element\Tag::addTagToElement('object', 3, $tag);
+        } catch (Exception $e) {
+        }
+
+
+    // Notes $Events
+        $note = new Model\Element\Note();
+        $note->setElement($test);
+        $note->setDate(time());
+        $note->setType("erp_import");
+        $note->setTitle("changed availabilities to xyz");
+        $note->setUser(1);
+
+        $note->addData("myText", "text", "Some Text");
+        $note->addData("myObject", "object", Model\DataObject::getById(3));
+        $note->addData("myDocument", "document", Model\Document::getById(11));
+        $note->addData("myAsset", "asset", Model\Asset::getById(20));
+
+        $note->save();
+
+
+        //create a new user for Employee
+        $user = User::create([
+            "parentId" => 0,
+            "username" => "Faculty",
+            "password" => "Faculty123",
+            "hasCredentials" => true,
+            "active" => true
+        ]);
+        $users = new Employee();
+        $users->setUser($user->getId());
+
+
+    //Adaptive Design Helper
+        $device = DeviceDetector::getInstance();
+        $device->getDevice(); // returns "phone", "tablet" or "desktop"
+        if($device->isDesktop()){
+            echo "I am " . $device;
+        }elseif ($device->isTablet()){
+            echo "Now I am " . $device;
+        }else{
+            echo "Then " . $device;
+        }
+
+    //Override Model
+        $office = new \App\Model\DataObject\Employee();
+        $office->setOffice('Calicut');
+
+    // Parent class for objects
+        //Override Model
+        $parent = new \App\Model\DataObject\TestParent();
+        $parent->setDes('I am the parent class for Employee');
 
         return $this->render('employee/employee.html.twig', [
             'project' => $project,
@@ -131,6 +193,8 @@ class EmployeeController extends FrontendController
             'link'=>$link,
             'asset'=>$asset,
             'translated'=>$translated,
+            'office'=>$office,
+            'parent'=>$parent,
         ]);
     }
 
@@ -156,5 +220,37 @@ class EmployeeController extends FrontendController
         $response .= array_to_html_attribute_string($context);
         return new Response($response);
     }
+
+    /**
+     * @Route("/get-previous-version", name="get_previous_version")
+     */
+    public function getPreviousVersionAction(Request $request): Response
+    {
+        // Load the current object
+        $currentObject = Employee::getById(3);
+
+        if (!$currentObject) {
+            // object with the given ID is not found
+            throw $this->createNotFoundException('Object not found');
+        }
+
+        // Get the versions of the object
+        $versions = $currentObject->getVersions();
+
+        // Check if there are at least two versions (current and at least one previous)
+        if (count($versions) >= 2) {
+            // Get the previous version
+            $previousVersion = $versions[count($versions) - 2];
+
+            // Get the data of the previous version
+            $previousObject = $previousVersion->getData();
+
+
+            return new JsonResponse(['message' => 'Previous version retrieved successfully', 'data' => $previousObject]);
+        } else {
+            return new JsonResponse(['message' => 'No previous version available']);
+        }
+    }
+
 
 }

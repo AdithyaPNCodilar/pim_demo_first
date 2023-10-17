@@ -30,6 +30,18 @@ parameters:
     #pimcore_executable_dot: /usr/bin/dot
 
 services:
+    App\LoggerService:
+        arguments:
+            $logger: '@pimcore.logger.application'
+
+    App\Service\LogService:
+        arguments:
+            $customlogLogger: '@monolog.logger.custom_log'
+
+    App\Service\NewlogService:
+        arguments:
+            $newlogLogger: '@monolog.logger.new_log'
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

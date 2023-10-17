@@ -187,5 +187,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
       'classname' => 'Task',
       'fieldname' => 'TeamTask',
     ),
+    1 => 
+    array (
+      'classname' => 'Car',
+      'fieldname' => 'newbrick',
+    ),
   ),
 ));

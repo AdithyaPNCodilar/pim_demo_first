@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                441157f2-0c64-46a9-8c32-652522032c99:
+                    name: 'Header color'
+                    description: 'Sprcify header color'
+                    key: new_key
+                    type: text
+                    data: ''
+                    config: ''
+                    ctype: document
+                    inheritable: false
+                    creationDate: 1697095266
+                    modificationDate: 1697095421

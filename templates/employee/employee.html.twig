@@ -8,6 +8,9 @@
             <p>Email {{ employee.email|raw }}</p>
         {% endif %}
 
+        <p>Location: {{ office.getOffice }}</p>
+        <p>Parent: {{ parent.getDes }}</p>
+
         {% if employee.geopoint is not empty %}
             <h3>Geopoints Data</h3>
             <p>Latitude: {{ employee.geopoint.getLatitude() }}</p>
@@ -109,6 +112,11 @@
 
     {{ asset.getThumbnail('logo').getHtml() | raw }}
     <hr>
+
     {{ translated|raw }}
+    <hr>
+    {% for key, value in pimcore_website_config() %}
+        <p>{{ key }}: {{ value }}</p>
+    {% endfor %}
 
 {% endfor %}

@@ -7,7 +7,7 @@ pimcore:
                     name: Employees
                     description: ''
                     creationDate: 1696501170
-                    modificationDate: 1696501207
+                    modificationDate: 1697535373
                     userOwner: 2
                     classId: '2'
                     layoutDefinitions:
