@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\DataObject;
+namespace CustomBundle\Model\DataObject;
 
 use Pimcore\Model\DataObject\Concrete as BaseMyModel;
 

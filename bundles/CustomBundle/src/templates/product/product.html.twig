@@ -1,0 +1,15 @@
+{% block content %}
+    <div class="product-info">
+            {% if product %}
+                <h2>SKU: {{ product.sku }}</h2>
+                <h2>Product Name: {{ product.title }}</h2>
+                <div class="content">
+                    {% if product.image %}
+                        {{ product.image.thumbnail("wjeans").html|raw }}
+                    {% endif %}
+                </div>
+                <h4>Size: {{ product.size}}</h4>
+                <h4>Color: {{ product.color}}</h4>
+            {% endif %}
+    </div>
+{% endblock %}

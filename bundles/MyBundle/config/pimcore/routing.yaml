@@ -1,0 +1,5 @@
+my:
+    resource: "@MyBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+

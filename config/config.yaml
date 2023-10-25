@@ -24,8 +24,13 @@ pimcore_admin:
                 - "Quality"
     custom_admin_path_identifier: min20CharCustomToken
 pimcore:
+    bundles:
+        search_paths:
+            - src/NewBundle
+            - src/CustomBundle
 
-# IMPORTANT Notice!
+
+    # IMPORTANT Notice!
 # Following there are only some examples listed, for a full list of possible options, please run the following command:
 # ./bin/console debug:config pimcore
 # you can also filter them by path, eg.

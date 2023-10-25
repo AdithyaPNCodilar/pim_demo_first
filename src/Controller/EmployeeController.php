@@ -63,7 +63,7 @@ class EmployeeController extends FrontendController
     public function employeeAction(Request $request): Response
     {
         $test = Employee::getById(3);
-        $translated = $test->getDescription('hi');
+//        $translated = $test->getDescription('hi');
 
         $blockItems = $test->getMyBlock();
         $firstBlockItem = $blockItems[0];
@@ -128,12 +128,12 @@ class EmployeeController extends FrontendController
         $asset = Asset::getById(20);
 
     // Tags
-        $tag =  new \Pimcore\Model\Element\Tag();
-        try {
-            $tag->setName('Document')->save();
-            \Pimcore\Model\Element\Tag::addTagToElement('object', 3, $tag);
-        } catch (Exception $e) {
-        }
+//        $tag =  new \Pimcore\Model\Element\Tag();
+//        try {
+//            $tag->setName('Document')->save();
+//            \Pimcore\Model\Element\Tag::addTagToElement('object', 3, $tag);
+//        } catch (Exception $e) {
+//        }
 
 
     // Notes $Events
@@ -153,35 +153,35 @@ class EmployeeController extends FrontendController
 
 
         //create a new user for Employee
-        $user = User::create([
-            "parentId" => 0,
-            "username" => "Faculty",
-            "password" => "Faculty123",
-            "hasCredentials" => true,
-            "active" => true
-        ]);
-        $users = new Employee();
-        $users->setUser($user->getId());
+//        $user = User::create([
+//            "parentId" => 0,
+//            "username" => "Faculty",
+//            "password" => "Faculty123",
+//            "hasCredentials" => true,
+//            "active" => true
+//        ]);
+//        $users = new Employee();
+//        $users->setUser($user->getId());
 
 
     //Adaptive Design Helper
-        $device = DeviceDetector::getInstance();
-        $device->getDevice(); // returns "phone", "tablet" or "desktop"
-        if($device->isDesktop()){
-            echo "I am " . $device;
-        }elseif ($device->isTablet()){
-            echo "Now I am " . $device;
-        }else{
-            echo "Then " . $device;
-        }
+//        $device = DeviceDetector::getInstance();
+//        $device->getDevice(); // returns "phone", "tablet" or "desktop"
+//        if($device->isDesktop()){
+//            echo "I am " . $device;
+//        }elseif ($device->isTablet()){
+//            echo "Now I am " . $device;
+//        }else{
+//            echo "Then " . $device;
+//        }
 
     //Override Model
-        $office = new \App\Model\DataObject\Employee();
+        $office = new \CustomBundle\Model\DataObject\Employee();
         $office->setOffice('Calicut');
 
     // Parent class for objects
         //Override Model
-        $parent = new \App\Model\DataObject\TestParent();
+        $parent = new \CustomBundle\Model\DataObject\TestParent();
         $parent->setDes('I am the parent class for Employee');
 
         return $this->render('employee/employee.html.twig', [
@@ -192,7 +192,7 @@ class EmployeeController extends FrontendController
             'classificationStoreData' => $classificationStoreData,
             'link'=>$link,
             'asset'=>$asset,
-            'translated'=>$translated,
+//            'translated'=>$translated,
             'office'=>$office,
             'parent'=>$parent,
         ]);

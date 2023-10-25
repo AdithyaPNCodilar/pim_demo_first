@@ -1,0 +1,8 @@
+{% block content %}
+    <div class="product-info">
+        {% if vote %}
+            <h2>Username: {{ vote.username }}</h2>
+            <h2>Score: {{ vote.score }}</h2>
+        {% endif %}
+    </div>
+{% endblock %}

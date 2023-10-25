@@ -1,0 +1,8 @@
+custom:
+    resource: "@CustomBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+
+product_preview:
+    path: /product/{id}
+    controller: CustomBundle\Controller\DefaultController::productAction

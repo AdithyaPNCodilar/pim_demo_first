@@ -1,21 +1,19 @@
-{% extends 'layout.html.twig' %}
 {% block content %}
-    <h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
-
-    <div class="product-info">
+    <div class="product-info" >
         {% if editmode %}
             {{ pimcore_relation("product") }}
         {% else %}
             {% set product = pimcore_relation("product").element %}
             {% if product %}
-                <h2>{{ product.name }}</h2>
+                <h2>SKU: {{ product.sku }}</h2>
+                <h2>Product Name: {{ product.title }}</h2>
                 <div class="content">
                     {% if product.image %}
-                        {{ product.image.thumbnail("content").html|raw }}
+                        {{ product.image.thumbnail("wjeans").html|raw }}
                     {% endif %}
-
-                    {{ product.description|raw }}
                 </div>
+                <h4>Size: {{ product.size}}</h4>
+                <h4>Color: {{ product.color}}</h4>
             {% endif %}
         {% endif %}
     </div>

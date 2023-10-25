@@ -113,10 +113,13 @@
     {{ asset.getThumbnail('logo').getHtml() | raw }}
     <hr>
 
-    {{ translated|raw }}
-    <hr>
+{#    {{ translated|raw }}#}
+{#    <hr>#}
     {% for key, value in pimcore_website_config() %}
         <p>{{ key }}: {{ value }}</p>
     {% endfor %}
+
+{#    <h4>{{ employee.name }}</h4>#}
+{#    <p>{{ employee.email }}</p>#}
 
 {% endfor %}
