@@ -30,7 +30,10 @@
       "App\\": "src/",
       "Pimcore\\Model\\DataObject\\": "var/classes/DataObject",
       "NewBundle\\": "src/NewBundle/src",
-      "CustomBundle\\": "bundles/CustomBundle/src"
+      "CustomBundle\\": "bundles/CustomBundle/src",
+      "TrackingBundle\\": "bundles/TrackingBundle/src",
+      "TrackBundle\\": "bundles/TrackBundle/src"
+
 
     }
   },

@@ -1,0 +1,4 @@
+custom:
+    resource: "@TrackingBundle/src/Controller/"
+    type:     annotation
+    prefix:   /

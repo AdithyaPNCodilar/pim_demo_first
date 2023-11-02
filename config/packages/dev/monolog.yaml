@@ -12,4 +12,10 @@ monolog:
             path: '%kernel.logs_dir%/new.log'
             channels: ['new_log']
 
-    channels: ['new_log','custom_log']
+        activity_handler:
+            level: debug
+            type: stream
+            path: '%kernel.logs_dir%/activity.log'
+#            channels: [ 'activity_log' ]
+
+    channels: ['new_log','custom_log','activity_log']

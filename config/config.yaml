@@ -28,6 +28,9 @@ pimcore:
         search_paths:
             - src/NewBundle
             - src/CustomBundle
+            - src/TrackingBundle
+            - bundles/TrackBundle
+
 
 
     # IMPORTANT Notice!

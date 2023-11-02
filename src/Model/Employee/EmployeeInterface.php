@@ -1,6 +1,6 @@
 <?php
 
-namespace CustomBundle\Model\Employee;
+namespace App\Model\Employee;
 
 interface EmployeeInterface
 {

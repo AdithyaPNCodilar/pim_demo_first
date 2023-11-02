@@ -10,5 +10,8 @@ return [
     PimcoreSimpleBackendSearchBundle::class => ['all' => true],
     NewBundle\NewBundle::class => ['all' => true],
     CustomBundle\CustomBundle::class => ['all' => true],
+    TrackingBundle\TrackingBundle::class => ['all' => true],
+    TrackBundle\TrackBundle::class => ['all' => true],
+
 
 ];

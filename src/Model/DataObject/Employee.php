@@ -1,6 +1,6 @@
 <?php
 
-namespace CustomBundle\Model\DataObject;
+namespace App\Model\DataObject;
 
 use Pimcore\Model\DataObject\Employee as BaseMyModel;
 use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;

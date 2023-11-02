@@ -1,0 +1,5 @@
+track:
+    resource: "@TrackBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+

@@ -7,7 +7,7 @@ pimcore.plugin.CustomBundle = Class.create({
     },
 
     pimcoreReady: function (e) {
-        alert("CustomBundle ready!");
+        // alert("CustomBundle ready!");
     }
 });
 
