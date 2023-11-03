@@ -18,7 +18,8 @@ class TrackBundle extends AbstractPimcoreBundle implements PimcoreBundleAdminCla
     public function getJsPaths(): array
     {
         return [
-            '/bundles/track/js/pimcore/startup.js'
+            '/bundles/track/js/pimcore/startup.js',
+            '/bundles/track/js/pimcore/newmenu.js'
         ];
     }
 

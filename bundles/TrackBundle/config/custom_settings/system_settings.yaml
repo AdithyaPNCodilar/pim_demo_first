@@ -1,0 +1,9 @@
+productName: CAR
+sku: CAR987
+quantity: 120
+productColor:
+    - Black
+    - White
+    - Grey
+productType: Gear
+checked: true
