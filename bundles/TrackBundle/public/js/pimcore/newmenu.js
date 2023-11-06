@@ -133,7 +133,44 @@ pimcore.plugin.newbutton = Class.create({
             this.systemPanel = null;
         }.bind(this));
     },
+
+    validateForm: function () {
+        const productName = Ext.getCmp('productName').getValue();
+        const quantity = Ext.getCmp('quantity').getValue();
+        const sku = Ext.getCmp('sku').getValue();
+        // const checked = Ext.getCmp('checked').getValue();
+
+        // Validate ProductName
+        if (!productName) {
+            Ext.Msg.alert('Error', 'ProductName is a mandatory field.');
+            return false;
+        }
+
+        // Validate Quantity
+        if (!quantity || quantity <= 0) {
+            Ext.Msg.alert('Error', 'Quantity must be a positive number.');
+            return false;
+        }
+
+        // Validate SKU
+        if (!sku) {
+            Ext.Msg.alert('Error', 'SKU is a mandatory field.');
+            return false;
+        }
+
+        // Validate Checkbox
+        // if (!checked) {
+        //     Ext.Msg.alert('Error', 'Checkbox is a mandatory field.');
+        //     return false;
+        // }
+
+        return true;
+    },
+
     saveData: function () {
+        if (!this.validateForm()) {
+            return;
+        }
         const productName = Ext.getCmp('productName').getValue();
         const sku = Ext.getCmp('sku').getValue();
         const quantity = Ext.getCmp('quantity').getValue();
@@ -141,26 +178,6 @@ pimcore.plugin.newbutton = Class.create({
         const productType = Ext.getCmp('productType').getValue();
         // const selectedDate = Ext.getCmp('selectedDate').getValue();
         const checked = Ext.getCmp('checked').getValue();
-
-
-        // Validate SKU
-        if (!sku) {
-            Ext.Msg.alert('Error', 'SKU is a mandatory field.');
-            return;
-        }
-
-        // Validate Quantity
-        if (!quantity) {
-            Ext.Msg.alert('Error', 'Quantity is a mandatory field.');
-            return;
-        }
-
-        // Validate Checkbox
-        if (!checked) {
-            Ext.Msg.alert('Error', 'Checkbox is a mandatory field.');
-            return;
-        }
-
 
 
         const data = {

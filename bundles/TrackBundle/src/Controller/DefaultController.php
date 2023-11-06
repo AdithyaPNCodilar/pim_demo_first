@@ -91,5 +91,29 @@ class DefaultController extends FrontendController
         return new JsonResponse(['success' => true, 'data' => $data]);
     }
 
-}
+    /**
+     * @Route("/yaml")
+     */
+    public function showdataAction(Request $request): Response
+    {
+        $configPath = $this->getParameter('kernel.project_dir') . '/bundles/TrackBundle/config/custom_settings/system_settings.yaml';
 
+        if (file_exists($configPath)) {
+            $yamlData = file_get_contents($configPath);
+            $data = Yaml::parse($yamlData);
+
+            // Check if 'checked' is set to true in your YAML data
+            $isChecked = isset($data['checked']) && $data['checked'] === true;
+
+            if ($isChecked) {
+                // Pass the parsed data to your Twig template
+                return $this->render('@TrackBundle/show/show.html.twig', ['data' => $data]);
+            } else {
+                return new JsonResponse(['error' => 'Access denied. Please check your permissions.']);
+            }
+
+        } else {
+            return new JsonResponse(['error' => 'YAML file not found']);
+        }
+    }
+}

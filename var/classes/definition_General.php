@@ -5,21 +5,27 @@
  * Variants: no
  *
  * Fields Summary:
- * - sku [input]
- * - title [input]
- * - size [numeric]
- * - color [select]
- * - image [image]
+ * - name [input]
+ * - email [email]
+ * - age [numeric]
+ * - gender [select]
+ * - dob [date]
+ * - country [country]
+ * - location [geopoint]
+ * - about [wysiwyg]
+ * - address [textarea]
+ * - testcollection [fieldcollections]
+ * - testbrick [objectbricks]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => '1',
-   'name' => 'Product',
+   'id' => '5',
+   'name' => 'General',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1699007118,
+   'modificationDate' => 1699254692,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -67,7 +73,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'Layout',
              'type' => NULL,
              'region' => NULL,
-             'title' => 'Product Data',
+             'title' => '',
              'width' => '',
              'height' => '',
              'collapsible' => false,
@@ -78,8 +84,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'sku',
-                 'title' => 'Sku',
+                 'name' => 'name',
+                 'title' => 'Name',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -107,9 +113,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValueGenerator' => '',
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'title',
-                 'title' => 'Title',
+              Pimcore\Model\DataObject\ClassDefinition\Data\Email::__set_state(array(
+                 'name' => 'email',
+                 'title' => 'Email',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -138,8 +144,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               )),
               2 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-                 'name' => 'size',
-                 'title' => 'Size',
+                 'name' => 'age',
+                 'title' => 'Age',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -168,8 +174,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               )),
               3 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-                 'name' => 'color',
-                 'title' => 'Color',
+                 'name' => 'gender',
+                 'title' => 'Gender',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -189,23 +195,13 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 array (
                   0 => 
                   array (
-                    'key' => 'White',
-                    'value' => 'White',
+                    'key' => 'Male',
+                    'value' => 'Male',
                   ),
                   1 => 
                   array (
-                    'key' => 'Black',
-                    'value' => 'Black',
-                  ),
-                  2 => 
-                  array (
-                    'key' => 'Blue',
-                    'value' => 'Blue',
-                  ),
-                  3 => 
-                  array (
-                    'key' => 'Yellow',
-                    'value' => 'Yellow',
+                    'key' => 'Female',
+                    'value' => 'Female',
                   ),
                 ),
                  'defaultValue' => '',
@@ -216,36 +212,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValueGenerator' => '',
                  'width' => '',
               )),
-            ),
-             'locked' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
-             'icon' => '',
-             'labelWidth' => 100,
-             'labelAlign' => 'left',
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'name' => 'Layout',
-             'type' => NULL,
-             'region' => NULL,
-             'title' => 'Media',
-             'width' => '',
-             'height' => '',
-             'collapsible' => false,
-             'collapsed' => false,
-             'bodyStyle' => '',
-             'datatype' => 'layout',
-             'children' => 
-            array (
-              0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
-                 'name' => 'image',
-                 'title' => 'Image',
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
+                 'name' => 'dob',
+                 'title' => 'Dob',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -261,9 +231,171 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'uploadPath' => '',
+                 'defaultValue' => NULL,
+                 'useCurrentDate' => false,
+                 'columnType' => 'bigint(20)',
+                 'defaultValueGenerator' => '',
+              )),
+              5 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Country::__set_state(array(
+                 'name' => 'country',
+                 'title' => 'Country',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValue' => NULL,
+                 'optionsProviderClass' => NULL,
+                 'optionsProviderData' => NULL,
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'defaultValueGenerator' => '',
                  'width' => '',
+                 'restrictTo' => '',
+              )),
+              6 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Geopoint::__set_state(array(
+                 'name' => 'location',
+                 'title' => 'Location',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'lat' => 0.0,
+                 'lng' => 0.0,
+                 'zoom' => 1,
+                 'mapType' => 'roadmap',
+                 'height' => 180,
+                 'width' => '',
+              )),
+              7 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+                 'name' => 'about',
+                 'title' => 'About',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
+                 'maxCharacters' => '',
                  'height' => '',
+                 'width' => '',
+              )),
+              8 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                 'name' => 'address',
+                 'title' => 'Address',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'maxLength' => NULL,
+                 'showCharCount' => false,
+                 'excludeFromSearchIndex' => false,
+                 'height' => '',
+                 'width' => '',
+              )),
+              9 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Fieldcollections::__set_state(array(
+                 'name' => 'testcollection',
+                 'title' => 'Testcollection',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'allowedTypes' => 
+                array (
+                  0 => 'NewFieldCollection',
+                ),
+                 'lazyLoading' => true,
+                 'maxItems' => NULL,
+                 'disallowAddRemove' => false,
+                 'disallowReorder' => false,
+                 'collapsed' => false,
+                 'collapsible' => false,
+                 'border' => false,
+              )),
+              10 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+                 'name' => 'testbrick',
+                 'title' => 'Testbrick',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'allowedTypes' => 
+                array (
+                  0 => 'TestBrick',
+                ),
+                 'maxItems' => NULL,
+                 'border' => false,
               )),
             ),
              'locked' => false,

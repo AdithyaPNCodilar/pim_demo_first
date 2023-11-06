@@ -1,9 +1,8 @@
 productName: CAR
-sku: CAR987
-quantity: 120
+sku: CAR-001
+quantity: 200
 productColor:
-    - Black
-    - White
     - Grey
+    - Black
 productType: Gear
 checked: true

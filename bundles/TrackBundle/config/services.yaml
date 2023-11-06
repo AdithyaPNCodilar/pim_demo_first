@@ -21,6 +21,9 @@ services:
             $logger: '@logger'
         tags:
             - { name: 'kernel.event_subscriber' }
+    TrackBundle\Command\CreateDataObjectsCommand:
+        tags:
+            - { name: 'console.command' }
 
 # add more services, or override services that need manual wiring
 #    TrackBundle\ExampleClass:
