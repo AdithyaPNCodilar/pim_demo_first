@@ -8,6 +8,7 @@ use League\Csv\Reader;
 use League\Csv\UnavailableStream;
 use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Fieldcollection;
+use Pimcore\Model\DataObject\Fieldcollection\Data\NewFieldCollection;
 use Pimcore\Model\DataObject\General;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -59,7 +60,12 @@ class CreateDataObjectsCommand extends Command
 
             $dataObject->setParentId($parentObject->getId());
 
-            // Set the 'country' field
+            $this->handleFieldcollections($record,$dataObject);
+            $this->handleBrick($record,$dataObject);
+            $this->handleBlock($record,$dataObject);
+
+
+
             $dataObject->setCountry($data['country']);
 
             $dataObject->save();
@@ -79,14 +85,14 @@ class CreateDataObjectsCommand extends Command
      */
     private function castValue(string $field, mixed $value): mixed
     {
+
         if ($field === 'dob') {
             return Carbon::parse($value);
         } elseif ($field === 'age') {
             return (float) $value;
         } elseif (strpos($field, 'location/') === 0) {
-            // Handle location fields
             list(, $subField) = explode('/', $field);
-            $location = $this->getLocation($value); // Implement a function to parse latitude and longitude
+            $location = $this->getLocation($value);
             return $location[$subField];
         } else {
             return $value;
@@ -97,7 +103,6 @@ class CreateDataObjectsCommand extends Command
     {
         $coordinates = explode(',', $value);
 
-        // Ensure that the coordinates array has at least two elements
         if (count($coordinates) >= 2) {
             return [
                 'latitude' => $coordinates[0],
@@ -109,6 +114,124 @@ class CreateDataObjectsCommand extends Command
                 'longitude' => null,
             ];
         }
+    }
+
+    private function handleFieldcollections(array $record, DataObject $dataObject): void
+    {
+        if (isset($record['newfieldcollection/0/name'])) {
+            $fields = $dataObject->getTestcollection();
+
+            if (!$fields) {
+                $fields = new Fieldcollection();
+                $dataObject->setTestcollection($fields);
+            } else {
+                foreach ($fields as $existingItem) {
+                    if ($existingItem->getName() === $record['newfieldcollection/0/name']) {
+                        // Update the existing entry
+                        $existingItem->setName($record['newfieldcollection/0/name']);
+
+                        foreach ($record as $field => $value) {
+                            // Exclude special fields like 'name' from updating
+                            if (!in_array($field, ['newfieldcollection/0/name'])) {
+                                $this->setFieldcollectionValue($existingItem, $field, $value);
+                            }
+                        }
+                        return;
+                    }
+                }
+            }
+
+            $entry = new NewFieldCollection();
+            $entry->setName($record['newfieldcollection/0/name']);
+
+            foreach ($record as $field => $value) {
+                // Exclude special fields like 'name' from setting
+                if (!in_array($field, ['newfieldcollection/0/name'])) {
+                    $this->setFieldcollectionValue($entry, $field, $value);
+                }
+            }
+
+            $fields->add($entry);
+        }
+    }
+
+    private function setFieldcollectionValue(NewFieldCollection $entry, string $field, mixed $value): void
+    {
+        // Use a naming convention to identify field types and set values dynamically
+        $setterMethod = 'set' . ucfirst($field);
+
+        if (method_exists($entry, $setterMethod)) {
+            if (is_string($value) && str_contains($value, ',')) {
+                $options = explode(',', $value);
+                $entry->$setterMethod($options);
+            } else {
+                $entry->$setterMethod($value);
+            }
+        }
+    }
+
+    private function handleBrick(array $record, DataObject\Concrete $dataObject): void
+    {
+        $brickKey = 'TestBrick';
+        $brick = $dataObject->getTestbrick();
+
+        if (!$brick) {
+            $brick = new DataObject\Objectbrick($dataObject, $brickKey);
+            $dataObject->setTestbrick($brick);
+        }
+
+        $brickData = $brick->get($brickKey);
+
+        if (!$brickData) {
+            $brickData = new \Pimcore\Model\DataObject\Objectbrick\Data\TestBrick($dataObject);
+        }
+
+        foreach ($record as $field => $value) {
+            if (!in_array($field, ["$brickKey/0/district"])) {
+                $this->setBrickValue($brickData, $field, $value);
+            }
+        }
+
+        $brick->set($brickKey, $brickData);
+    }
+
+    private function setBrickValue(\Pimcore\Model\DataObject\Objectbrick\Data\TestBrick $brickData, string $field, mixed $value): void
+    {
+        // Use a naming convention to identify field types and set values dynamically
+        $setterMethod = 'set' . ucfirst($field);
+
+        if (method_exists($brickData, $setterMethod)) {
+            if (is_string($value) && str_contains($value, ',')) {
+                $options = explode(',', $value);
+                $brickData->$setterMethod($options);
+            } else {
+                $brickData->$setterMethod($value);
+            }
+        }
+    }
+
+    private function handleBlock(array $record, DataObject\Concrete $dataObject): void
+    {
+        $blockKey = 'Testblock';
+        $blockData = [];
+
+        foreach ($record as $field => $value) {
+            // Check if the field belongs to the Testblock
+            if (strpos($field, "$blockKey/0/") === 0) {
+                $fieldName = substr($field, strlen("$blockKey/0/"));
+
+                // Create block element dynamically based on the field name
+                $blockElement = new \Pimcore\Model\DataObject\Data\BlockElement(
+                    $fieldName,
+                    'text',
+                    $value
+                );
+
+                $blockData[] = [$fieldName => $blockElement];
+            }
+        }
+
+        $dataObject->setTestblock($blockData);
     }
 
 }

@@ -3,7 +3,8 @@
 /**
  * Fields Summary:
  * - district [input]
- * - pincode [numeric]
+ * - state [input]
+ * - technologies [multiselect]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
@@ -72,9 +73,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'pincode',
-             'title' => 'Pincode',
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'name' => 'state',
+             'title' => 'State',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -91,15 +92,65 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
             ),
              'defaultValue' => NULL,
-             'integer' => false,
-             'unsigned' => false,
-             'minValue' => NULL,
-             'maxValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
              'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
+             'showCharCount' => false,
              'width' => '',
              'defaultValueGenerator' => '',
+          )),
+          2 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
+             'name' => 'technologies',
+             'title' => 'Technologies',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'PHP',
+                'value' => 'PHP',
+              ),
+              1 => 
+              array (
+                'key' => 'Python',
+                'value' => 'Python',
+              ),
+              2 => 
+              array (
+                'key' => 'JavaScript',
+                'value' => 'JavaScript',
+              ),
+              3 => 
+              array (
+                'key' => 'CSS',
+                'value' => 'CSS',
+              ),
+            ),
+             'maxItems' => NULL,
+             'renderType' => 'list',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'dynamicOptions' => false,
+             'height' => '',
+             'width' => '',
           )),
         ),
          'locked' => false,

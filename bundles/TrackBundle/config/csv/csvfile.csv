@@ -1,3 +1,3 @@
-key,name,email,age,dob,gender,country,location/latitude,location/longitude,about,address,newfieldcollection/0/name,score,joining,TestBrick/0/district,pincode
-EmpONe,John Doe,john@example.com,30,1992-05-15,Male,Australia,-33.8688,151.2093,Hello.............,Eden Gardens,john Doe,99,2000-08-21,Kozhikode,67301
-EmpTwo,Jacob Kim,jacob@example.com,25,1997-08-22,Female,Canada,45.4215,-75.6993,Dears**********,Holly Palace,Jacob Kim,1.99,2000-08-27,wayanad,673401
+key,name,email,age,dob,gender,country,location/latitude,location/longitude,about,address,newfieldcollection/0/name,designation,skills,education,subjects,TestBrick/0/district,state,technologies,Testblock/0/guardian,demo
+EmpONe,John Doe,john@gmail.com,30,1992-05-15,Male,Australia,-33.8688,151.2093,Hello,Eden Gardens,John Doe,Software Developer,PHP,MCA,"IOT,Electronics",Palakkad,Kerala,"PHP,JavaScript",Philip Doe,hdfjgf
+EmpTwo,Jacob Kim,jacob@gmail.com,25,1997-08-22,Male,Canada,45.4215,-75.6993,Hai,Holly Palace,Jacob Kim,QA,Automation,Btech,"DF,AI",Kannur,Karnataka,"Python,CSS",Sam Kim,dbjfv

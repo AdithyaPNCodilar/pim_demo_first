@@ -3,8 +3,10 @@
 /**
  * Fields Summary:
  * - name [input]
- * - score [numeric]
- * - joining [date]
+ * - designation [input]
+ * - skills [textarea]
+ * - education [wysiwyg]
+ * - subjects [multiselect]
  */
 
 return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
@@ -73,9 +75,9 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'score',
-             'title' => 'Score',
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'name' => 'designation',
+             'title' => 'Designation',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -92,20 +94,20 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             array (
             ),
              'defaultValue' => NULL,
-             'integer' => false,
-             'unsigned' => false,
-             'minValue' => NULL,
-             'maxValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
              'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
+             'showCharCount' => false,
              'width' => '',
              'defaultValueGenerator' => '',
           )),
           2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
-             'name' => 'joining',
-             'title' => 'Joining',
+          Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+             'name' => 'skills',
+             'title' => 'Skills',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -121,10 +123,86 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'defaultValue' => NULL,
-             'useCurrentDate' => false,
-             'columnType' => 'bigint(20)',
-             'defaultValueGenerator' => '',
+             'maxLength' => NULL,
+             'showCharCount' => false,
+             'excludeFromSearchIndex' => false,
+             'height' => '',
+             'width' => '',
+          )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+             'name' => 'education',
+             'title' => 'Education',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'toolbarConfig' => '',
+             'excludeFromSearchIndex' => false,
+             'maxCharacters' => '',
+             'height' => '',
+             'width' => '',
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
+             'name' => 'subjects',
+             'title' => 'Subjects',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'IOT',
+                'value' => 'IOT',
+              ),
+              1 => 
+              array (
+                'key' => 'AI',
+                'value' => 'AI',
+              ),
+              2 => 
+              array (
+                'key' => 'Electronics',
+                'value' => 'Electronics',
+              ),
+              3 => 
+              array (
+                'key' => 'DF',
+                'value' => 'DF',
+              ),
+            ),
+             'maxItems' => NULL,
+             'renderType' => 'list',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'dynamicOptions' => false,
+             'height' => '',
+             'width' => '',
           )),
         ),
          'locked' => false,
