@@ -1,0 +1,8 @@
+productName: CAR
+sku: CAR-001
+quantity: 200
+productColor:
+    - Grey
+    - Black
+productType: Gear
+checked: true

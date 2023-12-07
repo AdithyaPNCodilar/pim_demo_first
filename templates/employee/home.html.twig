@@ -1,0 +1,141 @@
+{% extends 'employee.html.twig' %}
+{% block content %}
+    <div class="welcome">
+        <h1>Welcome To Codilar</h1>
+    </div>
+
+    <div class="hero">
+            {{ pimcore_image("employee") }}
+    </div>
+    <div class="block-container">
+        <div class="block">
+            {% for i in pimcore_block('contentblock').iterator %}
+                <div class="content-item">
+                    <h2>{{ pimcore_input('subline') }}</h2>
+                    <div class="content-text">
+                        {{ pimcore_wysiwyg('content') }},
+                    </div>
+                    <div class="content-item">
+                        <p>{{ pimcore_date('myDate', {
+                                'format': 'd.m.Y',
+                                'outputFormat': '%d.%m.%Y'
+                            }) }}</p>
+                    </div>
+                    <div class="content-text">
+                        {{ pimcore_numeric('myNumber',{
+                            "width" : 300,
+                            "minValue" : 0,
+                            "maxValue" : 100,
+                            "decimalPrecision" : 0
+                        })
+                        }}
+                    </div>
+                    <div class="content-text">
+                        {{ pimcore_select('mySelect', {
+                            store: [
+                                ['closed', 'Closed'],
+                                ['opened', 'Opened'],
+                                ['open Soon', 'Open Soon']
+                            ]
+                        }) }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="main-content" class="main-content">
+        <div class="page-header">
+            <h4>{{ pimcore_input('headline', {'placeholder':'Headline'}) }}</h4>
+        </div>
+        {{ pimcore_areablock('myAreablock') }}
+    </div>
+
+    <section id="renderlet-gallery">
+        {{
+        pimcore_renderlet('myGallery', {
+            "controller" : "App\\Controller\\EmployeeController::myGalleryAction",
+            "title" : "Drag an asset folder here to get a gallery",
+            "height" : 400
+        })
+        }}
+    </section>
+
+    <section id="campaign_video">
+        {{ pimcore_video('campaignVideo', {
+            width: 900,
+            height: 400
+        }) }}
+    </section>
+
+    <p class="description">
+        {{ pimcore_textarea("description",{
+            "nl2br": true,
+            "height": 300,
+            "placeholder": "Description"
+        }) }}
+    </p>
+{#    <div class="schedule">#}
+{#        {% for i in pimcore_scheduledblock('block').iterator %}#}
+{#            <h2>{{ pimcore_input('blockinput') }}</h2>#}
+{#        {% endfor %}#}
+{#    </div>#}
+
+    <div class="fa-table">
+        {% if editmode %}
+            {{ pimcore_table("department", {
+                "width": 700,
+                "height": 1800,
+                "defaults": {
+                    "cols": 2,
+                    "rows": 3,
+                    "data": [
+                        ["Property", "Value"],
+                        ["Department", "Production"],
+                        ["Head", "HR"],
+                        ["Number of employees", "50"]
+                    ]
+                }
+            }) }}
+        {% else %}
+            {% set data = pimcore_table("department").getData() %}
+            {% if data is not empty %}
+                <table>
+                    <tbody>
+                    {% for row in data %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No data available.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    {% if editmode %}
+        {{ pimcore_multiselect('departments', {
+            'width': 200,
+            'height': 100,
+            'store': [
+                ['production', 'Production'],
+                ['business', 'Business'],
+                ['hr', 'Human Resource'],
+            ]
+        }) }}
+    {% else %}
+        <p>{{ 'This page is linked to' | trans }}
+            {% for departmentKey in pimcore_multiselect('departments').getData %}
+                <span>
+            {{ departmentKey | trans }}
+        </span>
+            {% endfor %}
+            departments
+        </p>
+    {% endif %}
+
+    {{ pimcore_snippet("mySnippet") }}
+{% endblock %}

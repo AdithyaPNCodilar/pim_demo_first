@@ -1,0 +1,150 @@
+pimcore_custom_reports:
+    definitions:
+        customReports:
+            name: customReports
+            sql: ''
+            dataSourceConfig:
+                -
+                    sql: 'select *'
+                    from: object_query_2
+                    where: ''
+                    groupby: ''
+                    type: sql
+            columnConfiguration:
+                -
+                    name: oo_id
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    columnAction: openObject
+                    id: extModel1694-3
+                -
+                    name: oo_classId
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-4
+                -
+                    name: oo_className
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-5
+                -
+                    name: Name
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-6
+                -
+                    name: Email
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-7
+                -
+                    name: Password
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-8
+                -
+                    name: geopoint__longitude
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-9
+                -
+                    name: geopoint__latitude
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-10
+                -
+                    name: 'Table__employee#salary'
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-11
+                -
+                    name: 'Table__employee#date'
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-12
+                -
+                    name: 'Table__department#salary'
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-13
+                -
+                    name: 'Table__department#date'
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-14
+                -
+                    name: Check
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-15
+                -
+                    name: Division
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-16
+                -
+                    name: fg
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1694-17
+            niceName: ''
+            group: ''
+            groupIconClass: ''
+            iconClass: ''
+            menuShortcut: true
+            reportClass: ''
+            chartType: pie
+            pieColumn: geopoint__longitude
+            pieLabelColumn: geopoint__longitude
+            xAxis: null
+            yAxis: {  }
+            modificationDate: 1697173946
+            creationDate: 1697171017
+            shareGlobally: true
+            sharedUserNames: {  }
+            sharedRoleNames: {  }

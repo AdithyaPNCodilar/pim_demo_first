@@ -1,0 +1,6 @@
+twig:
+    default_path: "%kernel.project_dir%/templates"
+    paths:
+        '%kernel.project_dir%/src/NewBundle/src/templates': NewBundle
+        '%kernel.project_dir%/bundles/CustomBundle/src/templates': CustomBundle
+        '%kernel.project_dir%/bundles/TrackBundle/src/templates': TrackBundle

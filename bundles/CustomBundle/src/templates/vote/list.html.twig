@@ -1,0 +1,12 @@
+{% block content %}
+    <div class="product-info">
+
+        {% for vote in votes %}
+            <tr>
+                <td>{{ vote.username }}</td>
+                <td>{{ vote.score }}</td>
+            </tr>
+        {% endfor %}
+
+    </div>
+{% endblock %}

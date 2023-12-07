@@ -1,0 +1,55 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    TrackBundle\Controller\:
+        resource: '../src/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    TrackBundle\EventListener\AdminActivityListener:
+        arguments:
+            $logger: '@logger'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+    TrackBundle\Command\CreateDataObjectsCommand:
+        tags:
+            - { name: 'console.command' }
+    TrackBundle\Command\CsvDataObjectsCommand:
+        tags:
+            - { name: 'console.command' }
+    TrackBundle\Tool\Installer:
+        public: true
+    TrackBundle\Controller\Api\ApiController:
+        arguments:
+            $apiService: '@track.api_service'
+    track.api_service:
+        class: TrackBundle\Service\ApiService
+        arguments:
+            $apiKey: '%env(API_KEY)%'
+            $logger: '@logger'
+        public: true
+
+    track_bundle.event_listener.dataobject_save_listener:
+        class: TrackBundle\EventListener\DataObjectSaveListener
+        arguments:
+            $apiService: '@track.api_service'
+            $httpClient: '@http_client'
+#            $logger: '@pimcore.app_logger'
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onPostUpdate }
+# add more services, or override services that need manual wiring
+#    TrackBundle\ExampleClass:
+#        arguments:
+#            - "@service_id"
+#            - "plain_value"
+#            - "%parameter%"

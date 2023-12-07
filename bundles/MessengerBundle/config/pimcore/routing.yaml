@@ -1,0 +1,9 @@
+messenger:
+    resource: "@MessengerBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+
+Messenger_data_get:
+    path: /messenger/sms
+    defaults: { _controller: MessengerBundle\Controller\MessengerController::messageAction }
+    methods: [POST]

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/employee.css') }}" type="text/css">
+</head>
+<body>
+<header>
+    {% if not document is defined or not document %}
+        {% set document = pimcore_document(1) %}
+    {% endif %}
+
+    {% set navStartNode = document.getProperty('navigationRoot') %}
+    {% if not navStartNode is instanceof('\\Pimcore\\Model\\Document\\Page') %}
+        {% set navStartNode = pimcore_document(1) %}
+    {% endif %}
+
+    {% set mainNavigation = pimcore_build_nav({
+        active: document,
+        root: navStartNode
+    }) %}
+
+    {{ pimcore_render_nav(mainNavigation) }}
+</header>
+<main>
+    <div>
+        {{ block('content') }}
+    </div>
+</main>
+</body>
+</html>

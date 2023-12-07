@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Data</title>
+</head>
+<body>
+
+<h1>Product Data</h1>
+
+<table border="1">
+    <tr>
+        <th>Field</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td>{{ data.productName }}</td>
+    </tr>
+    <tr>
+        <td>SKU</td>
+        <td>{{ data.sku }}</td>
+    </tr>
+    <tr>
+        <td>Quantity</td>
+        <td>{{ data.quantity }}</td>
+    </tr>
+    <tr>
+        <td>Product Color</td>
+        <td>
+            {% for color in data.productColor %}
+                {{ color }}
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>Product Type</td>
+        <td>{{ data.productType }}</td>
+    </tr>
+</table>
+
+</body>
+</html>
+

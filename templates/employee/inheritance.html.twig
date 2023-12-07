@@ -1,0 +1,16 @@
+{% extends 'employee.html.twig' %}
+{% block content %}
+<div class="welcome">
+    <h1>Welcome To Codilar</h1>
+</div>
+    <div class="block">
+        {% for i in pimcore_block('contentblock').iterator %}
+        <div class="content-item">
+            <h2>{{ pimcore_input('subline') }}</h2>
+            <div class="content-text">
+                {{ pimcore_wysiwyg('content') }},
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

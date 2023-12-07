@@ -1,0 +1,31 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    employee:
+                        items:
+                            -
+                                method: frame
+                                arguments:
+                                    width: 200
+                                    height: 100
+                                    forceResize: false
+                            -
+                                method: setBackgroundColor
+                                arguments:
+                                    color: '#00ff00'
+                        medias: {  }
+                        name: employee
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1697009144
+                        creationDate: 1695965173
+                        preserveAnimation: false

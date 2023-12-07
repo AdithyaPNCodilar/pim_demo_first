@@ -4,7 +4,22 @@ pimcore:
             thumbnails:
                 definitions:
                     content:
-                        items: {  }
+                        items:
+                            -
+                                method: frame
+                                arguments:
+                                    width: 400
+                                    height: 400
+                                    forceResize: false
+                            -
+                                method: setBackgroundColor
+                                arguments:
+                                    color: '#ff6600'
+                            -
+                                method: roundCorners
+                                arguments:
+                                    width: 10
+                                    height: 10
                         medias: {  }
                         name: content
                         description: ''
@@ -16,6 +31,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1695811837
+                        modificationDate: 1697006561
                         creationDate: 1695811837
                         preserveAnimation: false

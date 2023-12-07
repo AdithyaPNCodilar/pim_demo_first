@@ -1,10 +1,40 @@
 imports:
     - { resource: 'local/' }
 
-
+pimcore_admin:
+    objects:
+        notes_events:
+            types:
+                - "content"
+                - "manual data change"
+                - "notice"
+    documents:
+        notes_events:
+            types:
+                - "document"
+                - "content"
+                - "seo"
+                - "notice"
+    assets:
+        notes_events:
+            types:
+                - "myAsset"
+                - "content"
+                - "licese renewal"
+                - "Quality"
+    custom_admin_path_identifier: min20CharCustomToken
 pimcore:
+    bundles:
+        search_paths:
+            - src/NewBundle
+            - src/CustomBundle
+            - src/TrackingBundle
+            - bundles/TrackBundle
+            - bundles/MessengerBundle
 
-# IMPORTANT Notice!
+
+
+    # IMPORTANT Notice!
 # Following there are only some examples listed, for a full list of possible options, please run the following command:
 # ./bin/console debug:config pimcore
 # you can also filter them by path, eg.
@@ -13,17 +43,22 @@ pimcore:
 # ./bin/console debug:config pimcore assets.image
 
 
-#### TRANSLATIONS
-#    translations:
+### TRANSLATIONS
+    translations:
 #        case_insensitive: true
-
+        admin_translation_mapping:
+            'hr': 'en'
+            'zh': 'zh_Hans'
 #### FEATURE FLAGS
 #    flags:
 #        zend_date: true
 
 #### CLASS OVERRIDES EXAMPLES
-#    models:
-#        class_overrides:
+    models:
+        class_overrides:
+            'Pimcore\Model\DataObject\Employee': 'App\Model\DataObject\Employee'
+
+    #        class_overrides:
 #            'Pimcore\Model\DataObject\News': 'App\Model\DataObject\News'
 #            'Pimcore\Model\DataObject\News\Listing': 'App\Model\DataObject\News\Listing'
 #            'Pimcore\Model\DataObject\Folder': 'App\Model\DataObject\Folder'
@@ -35,7 +70,8 @@ pimcore:
 
 
 #### CUSTOM DOCUMENT EDITABLES
-#    documents:
+    documents:
+        auto_save_interval: 60 # saving interval in seconds, default 60s, set to 0 to disable it
 #        allow_trailing_slash: 'yes'
 #        generate_preview: false
 #        tags:
@@ -44,7 +80,8 @@ pimcore:
 
 
 #### CUSTOM OBJECT DATA TYPES
-#    objects:
+    objects:
+        auto_save_interval: 60 # saving interval in seconds, default 60s, set to 0 to disable it
 #        class_definitions:
 #            data:
 #                map:
@@ -100,6 +137,13 @@ pimcore:
 
 #### SYMFONY OVERRIDES
 framework:
+    messenger:
+        transports:
+            async: "%env(MESSENGER_TRANSPORT_DSN)%"
+
+        routing:
+            # async is whatever name you gave your transport above
+            'MessengerBundle\Message\SmsNotification': async
 
 #### DEFINE LOCATION OF MANIFEST WHEN WORKING WITH SYMFONY ENCORE
 #    assets:
@@ -134,3 +178,6 @@ framework:
 #         name: ''
 #         email: ''
 
+doctrine_migrations:
+    migrations_paths:
+        'App\Migrations': '%kernel.project_dir%/src/Migrations'

@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                0bb598b9-d148-42ce-a3fe-63021d2e3cad:
+                    name: sidebar
+                    description: ''
+                    key: new_key
+                    type: select
+                    data: abc
+                    config: ''
+                    ctype: object
+                    inheritable: false
+                    creationDate: 1697113053
+                    modificationDate: 1697113163
