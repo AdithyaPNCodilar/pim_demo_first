@@ -16,6 +16,8 @@
     "pimcore/bundle-generator": "^2.0",
     "pimcore/pimcore": "^11.0.4",
     "symfony/dotenv": "^6.2",
+    "symfony/http-client": "^6.4",
+    "symfony/messenger": "^6.4",
     "symfony/runtime": "^6.2"
   },
   "require-dev": {
@@ -32,8 +34,8 @@
       "NewBundle\\": "src/NewBundle/src",
       "CustomBundle\\": "bundles/CustomBundle/src",
       "TrackingBundle\\": "bundles/TrackingBundle/src",
-      "TrackBundle\\": "bundles/TrackBundle/src"
-
+      "TrackBundle\\": "bundles/TrackBundle/src",
+      "MessengerBundle\\": "bundles/MessengerBundle/src"
 
     }
   },

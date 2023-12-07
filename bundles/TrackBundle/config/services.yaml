@@ -24,7 +24,29 @@ services:
     TrackBundle\Command\CreateDataObjectsCommand:
         tags:
             - { name: 'console.command' }
+    TrackBundle\Command\CsvDataObjectsCommand:
+        tags:
+            - { name: 'console.command' }
+    TrackBundle\Tool\Installer:
+        public: true
+    TrackBundle\Controller\Api\ApiController:
+        arguments:
+            $apiService: '@track.api_service'
+    track.api_service:
+        class: TrackBundle\Service\ApiService
+        arguments:
+            $apiKey: '%env(API_KEY)%'
+            $logger: '@logger'
+        public: true
 
+    track_bundle.event_listener.dataobject_save_listener:
+        class: TrackBundle\EventListener\DataObjectSaveListener
+        arguments:
+            $apiService: '@track.api_service'
+            $httpClient: '@http_client'
+#            $logger: '@pimcore.app_logger'
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onPostUpdate }
 # add more services, or override services that need manual wiring
 #    TrackBundle\ExampleClass:
 #        arguments:

@@ -85,7 +85,7 @@ class CreateDataObjectsCommand extends Command
      */
     private function castValue(string $field, mixed $value): mixed
     {
-
+        var_dump("Field: " . $field, "Value: " . $value);
         if ($field === 'dob') {
             return Carbon::parse($value);
         } elseif ($field === 'age') {
@@ -232,6 +232,7 @@ class CreateDataObjectsCommand extends Command
         }
 
         $dataObject->setTestblock($blockData);
+        var_dump($blockData);
     }
 
 }

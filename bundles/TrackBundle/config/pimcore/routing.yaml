@@ -3,3 +3,13 @@ track:
     type:     annotation
     prefix:   /
 
+track_data_get:
+    path: /api/data/{id}
+    defaults: { _controller: TrackBundle\Controller\Api\ApiController::getDataObject }
+    methods: [GET]
+track_data_create:
+    path: /api/dataobjects/{name}
+    defaults:
+        _controller: 'TrackBundle\Controller\Api\ApiController::createDataObject'
+        _format: json
+    methods: [POST]

@@ -12,6 +12,6 @@ return [
     CustomBundle\CustomBundle::class => ['all' => true],
     TrackingBundle\TrackingBundle::class => ['all' => true],
     TrackBundle\TrackBundle::class => ['all' => true],
-
+    MessengerBundle\MessengerBundle::class => ['all' => true],
 
 ];

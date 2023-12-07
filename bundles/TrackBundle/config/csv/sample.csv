@@ -1,0 +1,2 @@
+key,name,age,dob,gender,image,relation,about,address,password,manyToOne,mTm,department,companyAddress,myself,cgpa,status,country,skills,images,joiningDate
+Sample,John Doe,30,1992-05-15,Male,/codilar.jpg,/Employees,Hello.......,White Palace,John@123,/Products,/Employees,Production,Codilar Technologies,I am JOHN,8.45,Unmarried,CA,"Php,HTML,CSS","/employee/codlar1.jpeg,/employee/codilar2.jpeg,/employee/codilar3.jpeg",2023-02-22
